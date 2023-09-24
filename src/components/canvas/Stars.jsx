@@ -75,7 +75,7 @@ const Stars = (props) => {
           depthWrite={false}
         />
       </Points>
-      <OrbitControls enableZoom={false}/>
+      <OrbitControls enableZoom={false} enablePan={false}/>
     </group>
   );
 };

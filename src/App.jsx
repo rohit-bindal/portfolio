@@ -10,6 +10,7 @@ import {
   Testimonials,
   Footer,
 } from "./components";
+import SocialLinks from "./components/SocialLinks";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <div className="relative z-50 bg-black">
         <div className="bg-black">
           <Navbar />
+          <SocialLinks/>
           <div className="relative z-0">
             <Stars />
           </div>

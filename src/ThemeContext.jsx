@@ -3,8 +3,8 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState({
-    primaryColor: "#00709C",
-    secondaryColor: "#2243AA",
+    primaryColor: "#C24949",
+    secondaryColor: "#75503A",
   });
 
   const updateThemeColors = (newPrimaryColor, newSecondaryColor) => {

@@ -36,12 +36,12 @@ export const navLinks = [
 ];
 
 export const themes = [
-  { name: "Ocean Breeze", primaryColor: "#00709C", secondaryColor: "#2243AA" },
   {
-    name: "Chocolate Symphony",
+    name: "Chocolate Symphony (Default)",
     primaryColor: "#C24949",
     secondaryColor: "#75503A",
   },
+  { name: "Ocean Breeze", primaryColor: "#00709C", secondaryColor: "#2243AA" },
   {
     name: "Forest Reverie",
     primaryColor: "#00FF00",
@@ -121,7 +121,7 @@ const testimonials = [
     testimonial:
       "Rohit is a deadline-driven, solution-oriented professional who is consistently enhancing our team's success.",
     name: "Sudhir Nune",
-    designation: "Manager",
+    designation: "Sr. Technology Architect",
     company: "Infosys",
     image: sudhir,
   },
@@ -166,7 +166,7 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "gpt-api",
+        name: "gpt & dall-e api",
         color: "pink-text-gradient",
       },
     ],
@@ -182,7 +182,7 @@ const projects = [
     tags: [
       {
         name: "react",
-        color: "blue-text-gradient",
+        color: "orange-text-gradient",
       },
       {
         name: "redux",
@@ -190,6 +190,10 @@ const projects = [
       },
       {
         name: "css",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "stripe & TMDB API",
         color: "pink-text-gradient",
       },
     ],
@@ -204,16 +208,16 @@ const projects = [
       "I crafted my portfolio website as a canvas to elegantly showcase my skills, projects, and experience. Utilizing Three.js, I breathed life into it, while Tailwind CSS and Framer Motion added captivating design and animations to create a visually engaging experience.",
     tags: [
       {
+        name: "react",
+        color: "orange-text-gradient",
+      },
+      {
         name: "threejs",
-        color: "blue-text-gradient",
+        color: "pink-text-gradient",
       },
       {
         name: "tailwindcss",
-        color: "green-text-gradient",
-      },
-      {
-        name: "react",
-        color: "pink-text-gradient",
+        color: "blue-text-gradient",
       },
     ],
     source_code_link: "https://github.com/rohit-bindal/portfolio",

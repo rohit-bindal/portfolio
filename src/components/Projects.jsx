@@ -10,6 +10,7 @@ const ProjectCard = ({
   index,
   name,
   description,
+  tags,
   source_code_link,
   demo_link,
   target_blank,
@@ -25,9 +26,18 @@ const ProjectCard = ({
 
         <div className="mt-5">
           <h3 className="text-white font-bold text-[24px]">{name}</h3>
+          <div className='mt-4 flex flex-wrap gap-2'>
+          {tags.map((tag, index) => (
+            <p
+              key={`${name}-${tag.name}`}
+              className={`text-[14px] ${tag.color} font-bold`}
+            >
+              {tag.name.toUpperCase()} {index != tags.length - 1 ? ' | ' : ''}
+            </p>
+          ))}
+        </div>
           <p className="mt-2 text-secondary text-[14px]">{description}</p>
         </div>
-
         <div className="mt-4 flex flex-wrap justify-between gap-2">
           <a
             className="themeColor border rounded-lg bg-black-500 text-white px-2 py-1 hover:bg-gray-900 hover:cursor-pointer"
