@@ -9,7 +9,6 @@ import { skills } from "../constants";
 const Skills = () => {
   const { theme, updateThemeColors } = useTheme();
   useEffect(() => {
-    return () => {
       const container = ".tagcloud";
 
       let radius;
@@ -27,7 +26,6 @@ const Skills = () => {
       };
 
       TagCloud(container, skills, options);
-    };
   }, []);
 
   return (
