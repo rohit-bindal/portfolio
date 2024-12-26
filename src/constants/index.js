@@ -1,8 +1,9 @@
 import {
   codechef,
-  infosys,
   mettl,
   newton_school,
+  insightxr,
+  infosys,
   chatgpt,
   netflix,
   portfolio,
@@ -10,6 +11,7 @@ import {
   sumukh,
   sudhir,
   kiran,
+  akshat
 } from "../assets";
 
 export const navLinks = [
@@ -54,28 +56,41 @@ export const themes = [
 
 export const skills = [
   "C++",
-  "Java",
   "Python",
   "HTML",
   "CSS",
   "JavaScript",
   "React",
-  "Spring",
-  "THREE",
+  "Node.js",
+  "Three.js",
   "Flutter",
   "SQL",
   "GIT",
+  "TERRAFORM"
 ];
 
 const experiences = [
+  {
+    title: "Founding Engineer",
+    company_name: "Insight XR",
+    icon: insightxr,
+    iconBg: "#FFFAFA",
+    date: "Jun 2024 - Present",
+    points: [
+      "Designed and developed a Unity SDK to track object properties (position, rotation, scale) in scenes, stream session data to a Node.js backend, and enable session replay, heatmap generation, and multi-view playback via a Three.js-powered dashboard.",
+      "Deployed scalable server infrastructure on Google Cloud VM, utilizing AWS DynamoDB and S3 for secure and efficient user data and model storage.",
+      "Implemented AI features for session insights, actionable feedback, and interactive chat, with ongoing exploration of advanced AI capabilities to enhance platform functionality.",
+      "Automated cloud deployments and resource provisioning using Terraform with remote state management on Terraform Cloud.",
+    ],
+  },
   {
     title: "Specialist Programmer",
     company_name: "Infosys",
     icon: infosys,
     iconBg: "#FFFAFA",
-    date: "June 2022 - Present",
+    date: "Jun 2022 - Jun 2024",
     points: [
-      "Developing a React app for managing watchers through a web interface, replacing manual YAML file management.",
+      "Built a full-stack solution with a React interface for managing watchers (replacing YAML files) and a Node.js non-blocking API for concurrent Snowflake table cloning.",
       "Created custom ETL handlers, managed data sources (PowerBI, Snowflake, Azure DevOps, Google Cloud), and conducted unit testing.",
       "Orchestrated end-to-end data pipelines, extracting data from diverse APIs, implementing DBT transformations, and deploying Snowflake table loading jobs, all efficiently managed through scheduled Dagster jobs.",
       "Ensured synchronization by utilizing sensor-based triggers in DBT jobs, closely tied to the extraction jobs, streamlining the data pipeline.",
@@ -117,6 +132,14 @@ const experiences = [
 ];
 
 const testimonials = [
+  // {
+  //   testimonial:
+  //     "Rohit is a deadline-driven, solution-oriented professional who is consistently enhancing our team's success.",
+  //   name: "Akshat Khare",
+  //   designation: "Founder",
+  //   company: "Insight XR",
+  //   image: akshat,
+  // },
   {
     testimonial:
       "Rohit is a deadline-driven, solution-oriented professional who is consistently enhancing our team's success.",

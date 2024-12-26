@@ -65,7 +65,7 @@ const Experience = () => {
         <p
           className={`secondaryText sm:text-[18px] text-[14px] uppercase tracking-wider text-center`}
         >
-          Work journey so far
+          PROFESSIONAL JOURNEY
         </p>
         <h2
           className={`primaryText font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center`}
@@ -77,7 +77,31 @@ const Experience = () => {
       <div className="mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
-            <ExperienceCard
+            index < 2 && <ExperienceCard
+              key={`experience-${index}`}
+              experience={experience}
+            />
+          ))}
+        </VerticalTimeline>
+      </div>
+
+      <motion.div className="section" id="experience" variants={textVariant()}>
+      <p
+          className={`secondaryText sm:text-[18px] text-[14px] uppercase tracking-wider text-center mt-20`}
+        >
+          SIDE PROJECTS
+        </p>
+      <h2
+          className={`primaryText font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px] text-center`}
+        >
+          FREELANCE WORK
+        </h2>
+      </motion.div>
+
+      <div className="mt-20 flex flex-col">
+        <VerticalTimeline>
+          {experiences.map((experience, index) => (
+            index > 1 && <ExperienceCard
               key={`experience-${index}`}
               experience={experience}
             />

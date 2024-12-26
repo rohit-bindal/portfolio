@@ -9,6 +9,8 @@ import { useTheme } from "../ThemeContext";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [themeToggle, setThemeToggle] = useState(false);
+  const [activeTheme, setActiveTheme] = useState("Chocolate Symphony (Default)");
+  const [hoveredTheme, setHoveredTheme] = useState(null);
 
   const { theme, updateThemeColors } = useTheme();
 
@@ -36,15 +38,24 @@ const Navbar = () => {
           />
           <ReactTooltip id="theme" place="right" content="Themes" />
           <div
-            className={`${
-              !themeToggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${!themeToggle ? "hidden" : "flex"
+              } p-6 black-gradient absolute top-20 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {themes.map((theme) => (
                 <li
                   key={theme.name}
-                  className={`text-white font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`font-poppins font-medium cursor-pointer text-[16px]`}
+                  style={{
+                    color:
+                      theme.name === activeTheme
+                        ? theme.primaryColor
+                        : theme.name === hoveredTheme
+                          ? theme.primaryColor
+                          : "white",
+                  }}
+                  onMouseEnter={() => setHoveredTheme(theme.name)}
+                  onMouseLeave={() => setHoveredTheme(null)}
                   onClick={() => {
                     setToggle(!toggle);
                   }}
@@ -52,6 +63,7 @@ const Navbar = () => {
                   <p
                     onClick={(e) => {
                       e.stopPropagation();
+                      setActiveTheme(theme.name);
                       changeColors(theme);
                     }}
                   >
@@ -82,9 +94,8 @@ const Navbar = () => {
           />
 
           <div
-            className={`${
-              !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${!toggle ? "hidden" : "flex"
+              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((link) => (

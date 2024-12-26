@@ -9,11 +9,13 @@ import aashish from "./testimonials/aashish.jpeg";
 import sumukh from "./testimonials/sumukh.png";
 import sudhir from "./testimonials/sudhir.png";
 import kiran from "./testimonials/kiran.jpeg";
+import akshat from "./testimonials/akshat.jpeg";
 
 import codechef from "./company/codechef.png";
 import newton_school from "./company/newton_school.png";
 import infosys from "./company/infosys.png";
 import mettl from "./company/mettl.png";
+import insightxr from "./company/insightxr.jpeg"
 
 import cf from "./handles/cf.png";
 import cc from "./handles/cc.png";
@@ -31,6 +33,7 @@ export {
   newton_school,
   infosys,
   mettl,
+  insightxr,
   cf,
   cc,
   lc,
@@ -43,5 +46,6 @@ export {
   aashish,
   sumukh,
   sudhir,
-  kiran
+  kiran,
+  akshat
 };
