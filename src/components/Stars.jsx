@@ -16,10 +16,10 @@ const Stars = () => {
             Hi, I'm <span className="primaryText">Rohit</span>
           </h1>
           <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            A Software Engineer Crafting Visually Pleasing Websites{" "}
-            <br className="sm:block hidden" /> and Thriving on Limit-Pushing
-            Challenges
+            A Full Stack AI Engineer Bridging Frontend, Backend, and AI{" "}
+            <br className="sm:block hidden" /> to Deliver Real-World Impact
           </p>
+
         </div>
       </div>
       <StarsCanvas />

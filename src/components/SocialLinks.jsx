@@ -13,20 +13,25 @@ function SocialLinks() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
   return (
     <>
+      {/* Social Links Button - Bottom Right */}
       <button
         onClick={toggleMenu}
         className="borderPrimary border z-10 rounded-full text-white w-12 h-12 fixed bottom-5 right-5 flex items-center justify-center cursor-pointer"
+        data-tooltip-id="social-links"
       >
         <FontAwesomeIcon icon={faLink} />
       </button>
+      <ReactTooltip id="social-links" place="left" content="Social Links" />
+
       {isMenuOpen && (
         <div className="fixed bottom-14 right-1 p-2 z-10 rounded-xl">
           <ul className="py-2">
             <li className="px-4 py-2">
               <a
-                href="https://drive.google.com/file/d/1FAFjsJdXeYjCvLAXB4RXR1T__BnKRihS/view?usp=sharing"
+                href="https://drive.google.com/file/d/1R95XyWzebIRWZoj1s1n7xfVxypMnQaQQ/view?usp=sharing"
                 target="_blank"
               >
                 <img

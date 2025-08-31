@@ -55,32 +55,31 @@ export const themes = [
 ];
 
 export const skills = [
-  "C++",
   "Python",
-  "HTML",
-  "CSS",
-  "JavaScript",
   "React",
-  "Node.js",
-  "Three.js",
-  "Flutter",
+  "FastAPI",
+  "LangChain",
+  "LangGraph",
+  "LangSmith",
   "SQL",
-  "GIT",
-  "TERRAFORM"
+  "Git",
+  "Docker",
+  "GCP",
+  "LLMs",
 ];
 
 const experiences = [
   {
-    title: "Founding Engineer",
-    company_name: "Insight XR",
+    title: "Founding AI Engineer",
+    company_name: "Sidecar AI",
     icon: insightxr,
     iconBg: "#FFFAFA",
     date: "Jun 2024 - Present",
     points: [
-      "Designed and developed a Unity SDK to track object properties (position, rotation, scale) in scenes, stream session data to a Node.js backend, and enable session replay, heatmap generation, and multi-view playback via a Three.js-powered dashboard.",
-      "Deployed scalable server infrastructure on Google Cloud VM, utilizing AWS DynamoDB and S3 for secure and efficient user data and model storage.",
-      "Implemented AI features for session insights, actionable feedback, and interactive chat, with ongoing exploration of advanced AI capabilities to enhance platform functionality.",
-      "Automated cloud deployments and resource provisioning using Terraform with remote state management on Terraform Cloud.",
+      "Built autonomous workflow agents for freight forwarders, automating RFQ processing end-to-end — from parsing emails with OCR, extracting shipping details, and querying internal databases to auto-filling carrier/ERP forms and fetching best bids.",
+      "Owned the full technical stack — frontend (React.js), backend (FastAPI, Python), and AI frameworks (LangGraph, LangChain, LangSmith, with RAG pipelines) — delivering production-grade solutions with rapid iteration.",
+      "Designed and scaled infrastructure on Google Cloud (VMs, Cloud SQL, Cloud Run) with automated deployments via Docker and GitHub Actions.",
+      "Implemented evaluation pipelines (evals) to benchmark agent reliability, run regression tests, and continuously improve accuracy through feedback-driven refinements.",
     ],
   },
   {

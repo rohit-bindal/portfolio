@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-three/drei": "^9.83.9",
     "@react-three/fiber": "^8.11.1",
+    "bland-client-js-sdk": "^1.0.3",
     "framer-motion": "^10.16.4",
     "maath": "^0.7.0",
     "react": "^18.2.0",
