@@ -1,125 +1,176 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useTheme } from "../ThemeContext";
-import { useState } from "react";
 import { lc, cc, cf, gfg, linkedin, git, resume } from "../assets";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+
+// CSS Tooltip wrapper component
+const Tooltip = ({ children, text, position = "left" }) => {
+  const positionClasses = {
+    left: "right-full mr-2 top-1/2 -translate-y-1/2",
+    top: "bottom-full mb-2 left-1/2 -translate-x-1/2",
+  };
+
+  return (
+    <div className="relative group">
+      {children}
+      <span
+        className={`absolute ${positionClasses[position]} px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50`}
+      >
+        {text}
+      </span>
+    </div>
+  );
+};
 
 function SocialLinks() {
-  const { theme, updateThemeColors } = useTheme();
+  const { theme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // Show scroll-to-top button when near bottom
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const pageHeight = document.documentElement.scrollHeight;
+      // Show button when within 300px of the bottom
+      setShowScrollTop(scrollPosition >= pageHeight - 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
+      {/* Scroll to Top Button - Left of Social Links */}
+      <button
+        onClick={scrollToTop}
+        className={`group borderPrimary border z-10 rounded-full text-white w-12 h-12 fixed bottom-5 right-20 flex items-center justify-center cursor-pointer transition-all duration-300 ${
+          showScrollTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
+        }`}
+      >
+        <FontAwesomeIcon icon={faArrowUp} />
+        <span className="absolute right-full mr-2 px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+          Back to Top
+        </span>
+      </button>
+
       {/* Social Links Button - Bottom Right */}
       <button
         onClick={toggleMenu}
-        className="borderPrimary border z-10 rounded-full text-white w-12 h-12 fixed bottom-5 right-5 flex items-center justify-center cursor-pointer"
-        data-tooltip-id="social-links"
+        className="group borderPrimary border z-10 rounded-full text-white w-12 h-12 fixed bottom-5 right-5 flex items-center justify-center cursor-pointer"
       >
         <FontAwesomeIcon icon={faLink} />
+        <span className={`absolute px-2 py-1 bg-gray-800 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none ${
+          showScrollTop ? "bottom-full mb-2" : "right-full mr-2"
+        }`}>
+          Social Links
+        </span>
       </button>
-      <ReactTooltip id="social-links" place="left" content="Social Links" />
 
       {isMenuOpen && (
         <div className="fixed bottom-14 right-1 p-2 z-10 rounded-xl">
           <ul className="py-2">
             <li className="px-4 py-2">
-              <a
-                href="https://drive.google.com/file/d/1R95XyWzebIRWZoj1s1n7xfVxypMnQaQQ/view?usp=sharing"
-                target="_blank"
-              >
-                <img
-                  data-tooltip-id="resume"
-                  src={resume}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="resume" place="left" content="Resume" />
+              <Tooltip text="Resume" position="left">
+                <a
+                  href="https://drive.google.com/file/d/1R95XyWzebIRWZoj1s1n7xfVxypMnQaQQ/view?usp=sharing"
+                  target="_blank"
+                >
+                  <img
+                    src={resume}
+                    alt="Resume"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a
-                href="https://www.linkedin.com/in/rohit-bindal-251445197/"
-                target="_blank"
-              >
-                <img
-                  data-tooltip-id="linkedin"
-                  src={linkedin}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="linkedin" place="left" content="LinkedIn" />
+              <Tooltip text="LinkedIn" position="left">
+                <a
+                  href="https://www.linkedin.com/in/rohit-bindal-251445197/"
+                  target="_blank"
+                >
+                  <img
+                    src={linkedin}
+                    alt="LinkedIn"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a href="https://github.com/rohit-bindal" target="_blank">
-                <img
-                  data-tooltip-id="github"
-                  src={git}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="github" place="left" content="GitHub" />
+              <Tooltip text="GitHub" position="left">
+                <a href="https://github.com/rohit-bindal" target="_blank">
+                  <img
+                    src={git}
+                    alt="GitHub"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a href="https://leetcode.com/rohitbindal29/" target="_blank">
-                <img
-                  data-tooltip-id="leetcode"
-                  src={lc}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="leetcode" place="left" content="LeetCode" />
+              <Tooltip text="LeetCode" position="left">
+                <a href="https://leetcode.com/rohitbindal29/" target="_blank">
+                  <img
+                    src={lc}
+                    alt="LeetCode"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a
-                href="https://auth.geeksforgeeks.org/user/rohitbindal29"
-                target="_blank"
-              >
-                <img
-                  data-tooltip-id="gfg"
-                  src={gfg}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="gfg" place="left" content="GeeksForGeeks" />
+              <Tooltip text="GeeksForGeeks" position="left">
+                <a
+                  href="https://auth.geeksforgeeks.org/user/rohitbindal29"
+                  target="_blank"
+                >
+                  <img
+                    src={gfg}
+                    alt="GeeksForGeeks"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a
-                href="https://codeforces.com/profile/code_bindal"
-                target="_blank"
-              >
-                <img
-                  data-tooltip-id="codeforces"
-                  src={cf}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white "
-                />
-              </a>
-              <ReactTooltip id="codeforces" place="left" content="CodeForces" />
+              <Tooltip text="CodeForces" position="left">
+                <a
+                  href="https://codeforces.com/profile/code_bindal"
+                  target="_blank"
+                >
+                  <img
+                    src={cf}
+                    alt="CodeForces"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
             <li className="px-4 py-2">
-              <a
-                href="https://www.codechef.com/users/code_bindal"
-                target="_blank"
-              >
-                <img
-                  data-tooltip-id="codechef"
-                  src={cc}
-                  alt=""
-                  className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
-                />
-              </a>
-              <ReactTooltip id="codechef" place="left" content="CodeChef" />
+              <Tooltip text="CodeChef" position="left">
+                <a
+                  href="https://www.codechef.com/users/code_bindal"
+                  target="_blank"
+                >
+                  <img
+                    src={cc}
+                    alt="CodeChef"
+                    className="w-[30px] h-[30px] hover:pointer rounded-full border border-white"
+                  />
+                </a>
+              </Tooltip>
             </li>
           </ul>
         </div>

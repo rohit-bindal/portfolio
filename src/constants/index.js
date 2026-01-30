@@ -11,7 +11,7 @@ import {
   sumukh,
   sudhir,
   kiran,
-  akshat
+  perlonai
 } from "../assets";
 
 export const navLinks = [
@@ -70,11 +70,24 @@ export const skills = [
 
 const experiences = [
   {
+    title: "Full Stack AI Engineer",
+    company_name: "Perlon AI",
+    company_link: "https://perlonai.com/",
+    icon: perlonai,
+    iconBg: "#FFFAFA",
+    date: "Sep 2025 - Present",
+    points: [
+      "Building in-platform calling with number management, call recordings, and transcripts as a campaign sequence step.",
+      "Implemented automated onboarding with role based campaign access, org level sharing, and CRM activity sync.",
+    ],
+  },
+  {
     title: "Founding AI Engineer",
     company_name: "Sidecar AI",
+    company_link: "https://usesidecar.com/",
     icon: insightxr,
     iconBg: "#FFFAFA",
-    date: "Jun 2024 - Present",
+    date: "Jun 2024 - Sep 2025",
     points: [
       "Built autonomous workflow agents for freight forwarders, automating RFQ processing end-to-end — from parsing emails with OCR, extracting shipping details, and querying internal databases to auto-filling carrier/ERP forms and fetching best bids.",
       "Owned the full technical stack — frontend (React.js), backend (FastAPI, Python), and AI frameworks (LangGraph, LangChain, LangSmith, with RAG pipelines) — delivering production-grade solutions with rapid iteration.",
@@ -85,6 +98,7 @@ const experiences = [
   {
     title: "Specialist Programmer",
     company_name: "Infosys",
+    company_link: "https://www.infosys.com/",
     icon: infosys,
     iconBg: "#FFFAFA",
     date: "Jun 2022 - Jun 2024",
@@ -98,6 +112,7 @@ const experiences = [
   {
     title: "Frontend Specialist",
     company_name: "CodeChef",
+    company_link: "https://www.codechef.com/",
     icon: codechef,
     iconBg: " #F5F5DC",
     date: "April 2023 - July 2023",
@@ -109,6 +124,7 @@ const experiences = [
   {
     title: "Content Creator",
     company_name: "Newton School",
+    company_link: "https://www.newtonschool.co/",
     icon: newton_school,
     iconBg: "#F5F5DC",
     date: "Jan 2023 - March 2023",
@@ -120,6 +136,7 @@ const experiences = [
   {
     title: "Problem Setter & Reviewer",
     company_name: "Mettl",
+    company_link: "https://mettl.com/",
     icon: mettl,
     iconBg: "#E6DEDD",
     date: "March 2022 - June 2022",

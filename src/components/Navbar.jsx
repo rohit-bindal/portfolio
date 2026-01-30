@@ -17,8 +17,62 @@ const Navbar = () => {
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [callState, setCallState] = useState('idle'); // 'idle', 'connecting', 'connected', 'error'
   const [blandClient, setBlandClient] = useState(null);
+  const [activeSection, setActiveSection] = useState("");
 
   const { theme, updateThemeColors } = useTheme();
+
+  // Intersection Observer to track active section
+  useEffect(() => {
+    const sectionIds = navLinks.map((link) => link.id);
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px", // Trigger when section is in the top 30% of viewport
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    // Check if at top of page (home section)
+    const handleScroll = () => {
+      const firstSection = document.getElementById(sectionIds[0]);
+      if (firstSection) {
+        const rect = firstSection.getBoundingClientRect();
+        // If the first section hasn't reached the trigger zone yet, clear active
+        if (rect.top > window.innerHeight * 0.3) {
+          setActiveSection("");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check on mount
+
+    return () => {
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     // Check if user has visited before
@@ -188,9 +242,24 @@ const Navbar = () => {
           {navLinks.map((link) => (
             <li
               key={link.id}
-              className={`text-white transition duration-500 hover:scale-125 text-[18px] font-medium cursor-pointer`}
+              className={`text-white transition duration-500 hover:scale-110 text-[18px] font-medium cursor-pointer`}
             >
-              <a href={`#${link.id}`}>{link.title}</a>
+              <a 
+                href={`#${link.id}`}
+                className="relative pb-1"
+                style={{
+                  color: activeSection === link.id ? theme.primaryColor : "white",
+                }}
+              >
+                {link.title}
+                <span
+                  className="absolute left-0 bottom-0 h-[2px] transition-all duration-300"
+                  style={{
+                    width: activeSection === link.id ? "100%" : "0%",
+                    backgroundColor: theme.primaryColor,
+                  }}
+                />
+              </a>
             </li>
           ))}
         </ul>
@@ -210,13 +279,26 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <li
                   key={link.id}
-                  className={`text-white font-poppins font-medium cursor-pointer text-[16px]`}
+                  className={`font-poppins font-medium cursor-pointer text-[16px]`}
                   onClick={() => {
                     setToggle(!toggle);
                   }}
                 >
-                  <a className="nav__link" href={`#${link.id}`}>
+                  <a 
+                    className="nav__link relative pb-1" 
+                    href={`#${link.id}`}
+                    style={{
+                      color: activeSection === link.id ? theme.primaryColor : "white",
+                    }}
+                  >
                     {link.title}
+                    <span
+                      className="absolute left-0 bottom-0 h-[2px] transition-all duration-300"
+                      style={{
+                        width: activeSection === link.id ? "100%" : "0%",
+                        backgroundColor: theme.primaryColor,
+                      }}
+                    />
                   </a>
                 </li>
               ))}

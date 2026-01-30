@@ -5,7 +5,7 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 function Footer() {
   return (
     <h2 className="text-center">
-      Copyright &#169; Rohit Bindal 2025
+      Copyright &#169; Rohit Bindal 2026
     </h2>
   );
 }

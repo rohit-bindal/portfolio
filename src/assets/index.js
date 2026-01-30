@@ -16,6 +16,7 @@ import newton_school from "./company/newton_school.png";
 import infosys from "./company/infosys.png";
 import mettl from "./company/mettl.png";
 import insightxr from "./company/insightxr.jpeg"
+import perlonai from "./company/perlon_ai.svg"
 
 import cf from "./handles/cf.png";
 import cc from "./handles/cc.png";
@@ -47,5 +48,6 @@ export {
   sumukh,
   sudhir,
   kiran,
-  akshat
+  akshat,
+  perlonai
 };

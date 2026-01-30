@@ -85,6 +85,18 @@ const Contact = () => {
               color: ${theme.primaryColor};
             }
             .secondaryText{color: ${theme.secondaryColor}}
+            .send-btn {
+              mask-image: url('/send.png');
+              mask-size: contain;
+              mask-repeat: no-repeat;
+              -webkit-mask-image: url('/send.png');
+              -webkit-mask-size: contain;
+              -webkit-mask-repeat: no-repeat;
+              background-color: white;
+            }
+            .send-btn:hover {
+              background-color: ${theme.primaryColor};
+            }
           `}
       </style>
       <div className={`flex justify-center mt-7`}>
@@ -97,8 +109,8 @@ const Contact = () => {
             onSubmit={handleSubmit}
             className="mt-12 flex flex-col gap-8"
           >
-            <div className="flex flex-col sm:flex-row gap-8 justify-between">
-              <label>
+            <div className="flex flex-col sm:flex-row gap-8">
+              <label className="flex-1">
                 <input
                   type="text"
                   name="name"
@@ -106,10 +118,10 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Name"
                   required
-                  className="bg-black  py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border border-white font-medium"
+                  className="w-full bg-black py-4 px-6 placeholder:text-gray-500 text-white rounded-lg outline-none border border-white font-medium"
                 />
               </label>
-              <label>
+              <label className="flex-1">
                 <input
                   type="email"
                   name="email"
@@ -117,7 +129,7 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Email"
                   required
-                  className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border border-white font-medium"
+                  className="w-full bg-black py-4 px-6 placeholder:text-gray-500 text-white rounded-lg outline-none border border-white font-medium"
                 />
               </label>
             </div>
@@ -127,17 +139,17 @@ const Contact = () => {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="Message"
+                placeholder="What would you like to say?"
                 required
-                className="bg-black py-4 px-6 placeholder:text-white text-white rounded-lg outline-none border border-white font-medium"
+                className="bg-black py-4 px-6 placeholder:text-gray-500 text-white rounded-lg outline-none border border-white font-medium"
               />
             </label>
 
-            <button type="submit" className="flex justify-end">
+            <button type="submit" className="flex justify-end cursor-pointer">
               {loading ? (
                 "Sending..."
               ) : (
-                <img src="/send.png" alt="" className="w-[35px] h-[35px]" />
+                <span className="send-btn w-[35px] h-[35px] inline-block transition-all duration-300" />
               )}
             </button>
           </form>
